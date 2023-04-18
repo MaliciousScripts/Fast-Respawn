@@ -1,0 +1,14 @@
+-- wait for the player's character to load
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+-- define respawn function
+local function respawn()
+    humanoid.Health = 0
+    wait(1) -- wait for the death animation to play
+    humanoid.Health = humanoid.MaxHealth
+end
+
+-- respawn when the script is executed
+respawn()
